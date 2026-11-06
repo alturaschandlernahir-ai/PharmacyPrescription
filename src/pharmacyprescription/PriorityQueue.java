@@ -1,8 +1,8 @@
 package pharmacyprescription;
 
 /**
- * Custom array-based Priority Queue built without java.util collections.
- * Sorts prescriptions in descending order of urgency level (3 = High, 1 = Low).
+ * Custom array-based Priority Queue implementation for managing Prescriptions.
+ * Stores elements sorted by urgency level without using java.util collections.
  */
 public class PriorityQueue {
     private Prescription[] elements;
