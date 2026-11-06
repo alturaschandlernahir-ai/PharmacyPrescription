@@ -13,14 +13,10 @@ public class PriorityQueue {
         this.size = 0;
     }
 
-    /**
-     * Inserts a prescription into its correct sorted position based on urgency.
-     * Returns true if added successfully, false if the queue is full.
-     */
  /**
-     * Inserts a prescription into its correct sorted position based on urgency.
-     * Returns true if added successfully, false if the queue is full.
-     */
+ * Inserts a prescription sorted by urgency level in descending order.
+ * Higher urgency levels (e.g., 3 - Emergency) remain toward the front.
+ */
     public boolean enqueue(Prescription prescription) {
         if (size >= elements.length) {
             return false; // Queue is full
