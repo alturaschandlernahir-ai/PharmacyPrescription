@@ -1,5 +1,8 @@
 package pharmacyprescription;
-
+/**
+ * Model class representing a single pharmacy prescription record.
+ * Encapsulates patient details, medication name, and numeric urgency ranking.
+ */
 public class Prescription {
     private String prescriptionId;
     private String patientName;
