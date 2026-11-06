@@ -71,7 +71,10 @@ public class PriorityQueue {
         }
         return null;
     }
-
+/**
+ * Returns a snapshot array containing active queue elements up to current size.
+ * Prevents returning null array slots to the GUI components.
+ */
     /**
      * Returns an array snapshot of all active prescriptions in the queue.
      */
