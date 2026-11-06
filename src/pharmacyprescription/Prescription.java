@@ -8,7 +8,7 @@ public class Prescription {
     private String patientName;
     private String medication;
     private int urgencyLevel;
-
+// Numeric urgency level mapping: 3 = High/Emergency, 2 = Medium, 1 = Low
     public Prescription(String prescriptionId, String patientName, String medication, int urgencyLevel) {
         this.prescriptionId = prescriptionId;
         this.patientName = patientName;
