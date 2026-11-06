@@ -56,7 +56,10 @@ public class PriorityQueue {
         size--;
         return highest;
     }
-
+/**
+ * Performs a manual linear search through the active elements array.
+ * Inspects stored objects directly without external data structure libraries.
+ */
     /**
      * Performs a manual linear search by Prescription ID.
      */
