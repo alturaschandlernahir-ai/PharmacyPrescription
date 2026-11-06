@@ -33,6 +33,10 @@ public class PriorityQueue {
         size++;
         return true;
     }
+    /**
+ * Removes and returns the highest-priority prescription from index 0.
+ * Shifts remaining elements left by 1 index to maintain contiguous array indexing.
+ */
 
     /**
      * Dequeues and returns the highest priority prescription (index 0).
