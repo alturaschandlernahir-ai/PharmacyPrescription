@@ -17,3 +17,9 @@ A pharmacy desktop tool to manage prescription queue processing based on urgency
 ## Team Roles & Contributions
 - **ALTURAS (Backend & DSA Lead):** Implementation of `Prescription` model, `PriorityQueue` array logic, and linear search.
 - **COMPENDIO (GUI & Integration Lead):** Java Swing `JFrame` drag-and-drop form design, input validation, and `JTable` rendering.
+
+
+## Testing Procedures
+- Run `PharmacyPrescriptionFrame` via NetBeans using `F6`.
+- Enqueue prescriptions with varying urgency levels (1 to 3) to test priority ordering.
+- Test manual linear search by inputting unique Prescription IDs.
