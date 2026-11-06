@@ -1,125 +1,86 @@
 package pharmacyprescription;
 
 /**
- * Array-based max-heap priority queue. Higher urgency is dequeued first.
- * Does not use java.util collections.
+ * Custom array-based Priority Queue built without java.util collections.
+ * Sorts prescriptions in descending order of urgency level (3 = High, 1 = Low).
  */
 public class PriorityQueue {
-
-    private final Prescription[] heap;
+    private Prescription[] elements;
     private int size;
 
     public PriorityQueue(int capacity) {
-        this.heap = new Prescription[capacity];
+        this.elements = new Prescription[capacity];
         this.size = 0;
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    public boolean isFull() {
-        return size == heap.length;
-    }
-
-    public int size() {
-        return size;
-    }
-
+    /**
+     * Inserts a prescription into its correct sorted position based on urgency.
+     * Returns true if added successfully, false if the queue is full.
+     */
+ /**
+     * Inserts a prescription into its correct sorted position based on urgency.
+     * Returns true if added successfully, false if the queue is full.
+     */
     public boolean enqueue(Prescription prescription) {
-        if (prescription == null || isFull()) {
-            return false;
+        if (size >= elements.length) {
+            return false; // Queue is full
         }
-        heap[size] = prescription;
-        siftUp(size);
+
+        int i = size - 1;
+        // Shift elements with lower urgency to the right
+        while (i >= 0 && elements[i].getUrgencyLevel() < prescription.getUrgencyLevel()) {
+            elements[i + 1] = elements[i];
+            i--;
+        }
+
+        elements[i + 1] = prescription;
         size++;
         return true;
     }
 
+    /**
+     * Dequeues and returns the highest priority prescription (index 0).
+     * Shifts remaining elements to the left.
+     */
     public Prescription dequeue() {
-        if (isEmpty()) {
-            return null;
+        if (size == 0) {
+            return null; // Queue is empty
         }
-        Prescription highest = heap[0];
+
+        Prescription highest = elements[0];
+        for (int i = 0; i < size - 1; i++) {
+            elements[i] = elements[i + 1];
+        }
+
+        elements[size - 1] = null;
         size--;
-        heap[0] = heap[size];
-        heap[size] = null;
-        if (size > 0) {
-            siftDown(0);
-        }
         return highest;
     }
 
+    /**
+     * Performs a manual linear search by Prescription ID.
+     */
     public Prescription searchById(String id) {
-        if (id == null) {
-            return null;
-        }
         for (int i = 0; i < size; i++) {
-            if (id.equalsIgnoreCase(heap[i].getId())) {
-                return heap[i];
+            if (elements[i].getPrescriptionId().equalsIgnoreCase(id)) {
+                return elements[i];
             }
         }
         return null;
     }
 
+    /**
+     * Returns an array snapshot of all active prescriptions in the queue.
+     */
     public Prescription[] getAll() {
-        Prescription[] snapshot = new Prescription[size];
+        Prescription[] current = new Prescription[size];
         for (int i = 0; i < size; i++) {
-            snapshot[i] = heap[i];
+            current[i] = elements[i];
         }
-        sortByPriorityDescending(snapshot);
-        return snapshot;
+        return current;
     }
 
-    private void sortByPriorityDescending(Prescription[] items) {
-        for (int i = 1; i < items.length; i++) {
-            Prescription key = items[i];
-            int j = i - 1;
-            while (j >= 0 && compare(items[j], key) < 0) {
-                items[j + 1] = items[j];
-                j--;
-            }
-            items[j + 1] = key;
-        }
-    }
-
-    private int compare(Prescription a, Prescription b) {
-        return a.getUrgency() - b.getUrgency();
-    }
-
-    private void siftUp(int index) {
-        while (index > 0) {
-            int parent = (index - 1) / 2;
-            if (compare(heap[index], heap[parent]) <= 0) {
-                break;
-            }
-            swap(index, parent);
-            index = parent;
-        }
-    }
-
-    private void siftDown(int index) {
-        while (true) {
-            int left = index * 2 + 1;
-            int right = index * 2 + 2;
-            int largest = index;
-            if (left < size && compare(heap[left], heap[largest]) > 0) {
-                largest = left;
-            }
-            if (right < size && compare(heap[right], heap[largest]) > 0) {
-                largest = right;
-            }
-            if (largest == index) {
-                break;
-            }
-            swap(index, largest);
-            index = largest;
-        }
-    }
-
-    private void swap(int i, int j) {
-        Prescription temp = heap[i];
-        heap[i] = heap[j];
-        heap[j] = temp;
+    public int getSize() {
+        return size;
     }
 }

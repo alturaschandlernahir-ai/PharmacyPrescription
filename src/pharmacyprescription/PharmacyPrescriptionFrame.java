@@ -37,9 +37,9 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
 
         lblTitle = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        txtPrescriptionId = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        txtPatientName = new javax.swing.JTextField();
         lblMedication = new javax.swing.JLabel();
         txtMedication = new javax.swing.JTextField();
         lblUrgency = new javax.swing.JLabel();
@@ -50,7 +50,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
         btnProcess = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblRecords = new javax.swing.JTable();
+        tblPrescriptions = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pharmacy Prescription Queue");
@@ -76,7 +76,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
 
         btnSearch.setText("Search");
 
-        tblRecords.setModel(new javax.swing.table.DefaultTableModel(
+        tblPrescriptions.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -92,7 +92,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblRecords);
+        jScrollPane1.setViewportView(tblPrescriptions);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,11 +114,11 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                                     .addComponent(lblSearchId))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                    .addComponent(txtName)
-                                    .addComponent(txtMedication)
-                                    .addComponent(cmbUrgency, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtSearchId)))
+                                    .addComponent(txtPrescriptionId, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(txtPatientName, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(txtMedication, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(cmbUrgency, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(txtSearchId, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -136,11 +136,11 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrescriptionId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMedication)
@@ -158,7 +158,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                     .addComponent(btnAdd)
                     .addComponent(btnProcess)
                     .addComponent(btnSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addGap(16, 16, 16))
         );
@@ -174,8 +174,8 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
     }
 
     private void addPrescription() {
-        String id = txtId.getText().trim();
-        String name = txtName.getText().trim();
+        String id = txtPrescriptionId.getText().trim();
+        String name = txtPatientName.getText().trim();
         String medication = txtMedication.getText().trim();
 
         if (id.isEmpty() || name.isEmpty() || medication.isEmpty()) {
@@ -265,28 +265,42 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
         );
     }
 
-    private void refreshTable() {
-        DefaultTableModel model = (DefaultTableModel) tblRecords.getModel();
+private void refreshTable() {
+        DefaultTableModel model = (DefaultTableModel) tblPrescriptions.getModel();
         model.setRowCount(0);
 
         Prescription[] records = queue.getAll();
         for (int i = 0; i < records.length; i++) {
             Prescription record = records[i];
+
+            String urgencyLabel;
+            switch (record.getUrgencyLevel()) {
+                case 3:
+                    urgencyLabel = "3 - High/Emergency";
+                    break;
+                case 2:
+                    urgencyLabel = "2 - Medium";
+                    break;
+                default:
+                    urgencyLabel = "1 - Low";
+                    break;
+            }
+
             model.addRow(new Object[] {
-                record.getId(),
-                record.getName(),
+                record.getPrescriptionId(),
+                record.getPatientName(),
                 record.getMedication(),
-                record.getUrgencyLabel()
+                urgencyLabel
             });
         }
     }
 
     private void clearInputFields() {
-        txtId.setText("");
-        txtName.setText("");
+        txtPrescriptionId.setText("");
+        txtPatientName.setText("");
         txtMedication.setText("");
         cmbUrgency.setSelectedIndex(0);
-        txtId.requestFocusInWindow();
+        txtPrescriptionId.requestFocusInWindow();
     }
 
     private int parseUrgency() {
@@ -341,10 +355,10 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSearchId;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUrgency;
-    private javax.swing.JTable tblRecords;
-    private javax.swing.JTextField txtId;
+    private javax.swing.JTable tblPrescriptions;
     private javax.swing.JTextField txtMedication;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPatientName;
+    private javax.swing.JTextField txtPrescriptionId;
     private javax.swing.JTextField txtSearchId;
     // End of variables declaration//GEN-END:variables
 }
