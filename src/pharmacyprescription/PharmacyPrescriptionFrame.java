@@ -297,7 +297,9 @@ private void refreshTable() {
             });
         }
     }
-
+/**
+ * Clears all input text components and returns cursor focus to the primary ID field.
+ */
     private void clearInputFields() {
         txtPrescriptionId.setText("");
         txtPatientName.setText("");
