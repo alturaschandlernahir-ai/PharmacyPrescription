@@ -264,7 +264,10 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
-
+/**
+ * Refreshes the JTable model to render all active queue elements.
+ * Formats integer urgency levels into descriptive text strings for display.
+ */
 private void refreshTable() {
         DefaultTableModel model = (DefaultTableModel) tblPrescriptions.getModel();
         model.setRowCount(0);
