@@ -15,17 +15,27 @@ public class Prescription {
         this.medication = medication;
         this.urgencyLevel = urgencyLevel;
     }
-
+/**
+ * Accessor method for retrieving the unique prescription identifier.
+ * @return Prescription ID string.
+ */
     // This getter method resolves the red underline in PriorityQueue.java
     public String getPrescriptionId() {
         return prescriptionId;
     }
-
+/**
+ * Accessor method for retrieving the patient's full name.
+ * @return Patient name string.
+ */
     public String getPatientName() {
         return patientName;
     }
 
     public String getMedication() {
+        /**
+ * Accessor method for retrieving prescribed medication name.
+ * @return Medication string.
+ */
         return medication;
     }
 

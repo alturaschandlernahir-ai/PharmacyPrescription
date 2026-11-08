@@ -33,7 +33,7 @@
                           <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblId" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tblPrescriptions" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblMedication" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblUrgency" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -42,7 +42,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtId" pref="260" max="32767" attributes="0"/>
-                                  <Component id="txtName" max="32767" attributes="0"/>
+                                  <Component id="txtPatientName" max="32767" attributes="0"/>
                                   <Component id="txtMedication" max="32767" attributes="0"/>
                                   <Component id="cmbUrgency" max="32767" attributes="0"/>
                                   <Component id="txtSearchId" max="32767" attributes="0"/>
@@ -70,13 +70,13 @@
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblId" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tblPrescriptions" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPatientName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -115,7 +115,7 @@
         <Property name="text" type="java.lang.String" value="Pharmacy Prescription Queue"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblId">
+    <Component class="javax.swing.JLabel" name="tblPrescriptions">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prescription ID:"/>
       </Properties>
@@ -127,7 +127,7 @@
         <Property name="text" type="java.lang.String" value="Patient Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtName">
+    <Component class="javax.swing.JTextField" name="txtPatientName">
     </Component>
     <Component class="javax.swing.JLabel" name="lblMedication">
       <Properties>
@@ -166,6 +166,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnProcess">
       <Properties>

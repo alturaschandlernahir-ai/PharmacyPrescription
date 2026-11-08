@@ -19,6 +19,7 @@ public class PriorityQueue {
  */
     public boolean enqueue(Prescription prescription) {
         if (size >= elements.length) {
+            // Guard against array index out-of-bounds error when queue reaches capacity
             return false; // Queue is full
         }
 
@@ -85,7 +86,10 @@ public class PriorityQueue {
         }
         return current;
     }
-
+/**
+ * Returns the current count of elements stored in the priority queue.
+ * @return Number of active prescription records.
+ */
     public int getSize() {
         return size;
     }
