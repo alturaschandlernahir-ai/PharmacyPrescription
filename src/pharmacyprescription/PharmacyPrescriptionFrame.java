@@ -38,10 +38,10 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-        lblId = new javax.swing.JLabel();
+        txtPrescriptionId = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        txtPatientName = new javax.swing.JTextField();
         lblMedication = new javax.swing.JLabel();
         txtMedication = new javax.swing.JTextField();
         lblUrgency = new javax.swing.JLabel();
@@ -60,7 +60,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitle.setText("Pharmacy Prescription Queue");
 
-        lblId.setText("Prescription ID:");
+        txtPrescriptionId.setText("Prescription ID:");
 
         lblName.setText("Patient Name:");
 
@@ -117,7 +117,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                             .addComponent(lblTitle)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblId)
+                                    .addComponent(txtPrescriptionId)
                                     .addComponent(lblName)
                                     .addComponent(lblMedication)
                                     .addComponent(lblUrgency)
@@ -125,7 +125,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                    .addComponent(txtName)
+                                    .addComponent(txtPatientName)
                                     .addComponent(txtMedication)
                                     .addComponent(cmbUrgency, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtSearchId)))
@@ -145,12 +145,12 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                 .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblId)
+                    .addComponent(txtPrescriptionId)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMedication)
@@ -179,6 +179,8 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
 // Validate user inputs before constructing new Prescription model object
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        // Execute linear search by ID and display result matching object details
+        // Validate user inputs before constructing new Prescription model object
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void attachEventHandlers() {
@@ -368,7 +370,6 @@ private void refreshTable() {
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cmbUrgency;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblMedication;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblSearchId;
@@ -377,7 +378,8 @@ private void refreshTable() {
     private javax.swing.JTable tblRecords;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMedication;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPatientName;
+    private javax.swing.JLabel txtPrescriptionId;
     private javax.swing.JTextField txtSearchId;
     // End of variables declaration//GEN-END:variables
 }
