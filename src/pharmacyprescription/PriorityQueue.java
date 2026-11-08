@@ -85,7 +85,10 @@ public class PriorityQueue {
         }
         return current;
     }
-
+/**
+ * Returns the current count of elements stored in the priority queue.
+ * @return Number of active prescription records.
+ */
     public int getSize() {
         return size;
     }
