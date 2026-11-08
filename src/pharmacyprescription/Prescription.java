@@ -32,6 +32,10 @@ public class Prescription {
     }
 
     public String getMedication() {
+        /**
+ * Accessor method for retrieving prescribed medication name.
+ * @return Medication string.
+ */
         return medication;
     }
 
