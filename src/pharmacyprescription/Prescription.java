@@ -23,7 +23,10 @@ public class Prescription {
     public String getPrescriptionId() {
         return prescriptionId;
     }
-
+/**
+ * Accessor method for retrieving the patient's full name.
+ * @return Patient name string.
+ */
     public String getPatientName() {
         return patientName;
     }
