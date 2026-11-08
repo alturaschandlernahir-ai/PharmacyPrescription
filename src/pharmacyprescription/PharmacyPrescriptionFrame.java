@@ -38,7 +38,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-        txtPrescriptionId = new javax.swing.JLabel();
+        tblPrescriptions = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
         txtPatientName = new javax.swing.JTextField();
@@ -60,7 +60,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitle.setText("Pharmacy Prescription Queue");
 
-        txtPrescriptionId.setText("Prescription ID:");
+        tblPrescriptions.setText("Prescription ID:");
 
         lblName.setText("Patient Name:");
 
@@ -117,7 +117,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                             .addComponent(lblTitle)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPrescriptionId)
+                                    .addComponent(tblPrescriptions)
                                     .addComponent(lblName)
                                     .addComponent(lblMedication)
                                     .addComponent(lblUrgency)
@@ -145,7 +145,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
                 .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrescriptionId)
+                    .addComponent(tblPrescriptions)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -190,7 +190,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
     }
 
     private void addPrescription() {
-        String id = txtPrescriptionId.getText().trim();
+        String id = tblPrescriptions.getText().trim();
         String name = txtPatientName.getText().trim();
         String medication = txtMedication.getText().trim();
 
@@ -285,7 +285,7 @@ public class PharmacyPrescriptionFrame extends javax.swing.JFrame {
  * Formats integer urgency levels into descriptive text strings for display.
  */
 private void refreshTable() {
-        DefaultTableModel model = (DefaultTableModel) tblPrescriptions.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblRecords.getModel();
         model.setRowCount(0);
 
         Prescription[] records = queue.getAll();
@@ -317,11 +317,11 @@ private void refreshTable() {
  * Clears all input text components and returns cursor focus to the primary ID field.
  */
     private void clearInputFields() {
-        txtPrescriptionId.setText("");
+        tblPrescriptions.setText("");
         txtPatientName.setText("");
         txtMedication.setText("");
         cmbUrgency.setSelectedIndex(0);
-        txtPrescriptionId.requestFocusInWindow();
+        tblPrescriptions.requestFocusInWindow();
     }
 
     private int parseUrgency() {
@@ -375,11 +375,11 @@ private void refreshTable() {
     private javax.swing.JLabel lblSearchId;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUrgency;
+    private javax.swing.JLabel tblPrescriptions;
     private javax.swing.JTable tblRecords;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMedication;
     private javax.swing.JTextField txtPatientName;
-    private javax.swing.JLabel txtPrescriptionId;
     private javax.swing.JTextField txtSearchId;
     // End of variables declaration//GEN-END:variables
 }

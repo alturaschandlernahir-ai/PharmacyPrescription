@@ -33,7 +33,7 @@
                           <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtPrescriptionId" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tblPrescriptions" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblMedication" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblUrgency" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -70,7 +70,7 @@
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtPrescriptionId" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tblPrescriptions" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -115,7 +115,7 @@
         <Property name="text" type="java.lang.String" value="Pharmacy Prescription Queue"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtPrescriptionId">
+    <Component class="javax.swing.JLabel" name="tblPrescriptions">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prescription ID:"/>
       </Properties>

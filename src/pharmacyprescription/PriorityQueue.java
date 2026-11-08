@@ -19,6 +19,7 @@ public class PriorityQueue {
  */
     public boolean enqueue(Prescription prescription) {
         if (size >= elements.length) {
+            // Guard against array index out-of-bounds error when queue reaches capacity
             return false; // Queue is full
         }
 
