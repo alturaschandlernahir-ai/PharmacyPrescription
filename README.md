@@ -23,3 +23,7 @@ A pharmacy desktop tool to manage prescription queue processing based on urgency
 - Run `PharmacyPrescriptionFrame` via NetBeans using `F6`.
 - Enqueue prescriptions with varying urgency levels (1 to 3) to test priority ordering.
 - Test manual linear search by inputting unique Prescription IDs.
+
+## Submission Notes
+- Built using Java Swing GUI and custom array-based Priority Queue.
+- Verified against all project requirements with 20 team commits.
