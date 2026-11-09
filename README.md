@@ -27,3 +27,5 @@ A pharmacy desktop tool to manage prescription queue processing based on urgency
 ## Submission Notes
 - Built using Java Swing GUI and custom array-based Priority Queue.
 - Verified against all project requirements with 20 team commits.
+
+Repo link: https://github.com/alturaschandlernahir-ai/PharmacyPrescription.git
